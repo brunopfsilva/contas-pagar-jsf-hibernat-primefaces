@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+   <h:head></h:head>
+   <h:body>
+   <br/>   <h:form>
+	   <p:commandButton value="Novo fornecedor" actionListener="#{forBean.novo}" ajax="false" action="novo?faces-redirect" ></p:commandButton>
+	
+	   <br/>
+		   <p:dataTable id="listagem_fornecedor" value="#{forBean.fornecedores}" var="fornecedor">
+		   		<p:column headerText="ID" >
+		   				<h:outputText value="#{fornecedor.id}" ></h:outputText>
+		   		</p:column>
+		   		<p:column headerText="Nome" >
+		   				<h:outputText value="#{fornecedor.nome}" ></h:outputText>
+		   		</p:column>
+		   		<p:column headerText="Telefone" >
+		   				<h:outputText value="#{fornecedor.telefone}" ></h:outputText>
+		   		</p:column>
+		   		<p:column headerText="Endereco" >
+		   				<h:outputText value="#{fornecedor.endereco}" ></h:outputText>
+		   		</p:column>
+		   		<p:column headerText="Editar" >
+		   				<p:commandButton value="[EDITAR]" action="editar" actionListener="#{forBean.selecionarFornecedor}" ></p:commandButton>
+		   		</p:column>
+		   		<p:column headerText="Apagar" >
+		   				<p:commandButton immediate="true" ajax="true" value="[APAGAR]"  actionListener="#{forBean.delFornecedor}" update="listagem_fornecedor">
+		   					<p:confirm header="Excluir fonrncedor" message="Desesa excluir este fornecedor?" icon="ui-icon-alert" ></p:confirm>
+		   				</p:commandButton>
+		   		</p:column>
+		   </p:dataTable>
+					   <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					   		<p:commandButton value="sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        					<p:commandButton value="não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					   </p:confirmDialog>
+		</h:form>
+   
+   </h:body>
+   
+   
+</html>
