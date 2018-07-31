@@ -14,19 +14,23 @@
 	
 <h:outputLabel value=""></h:outputLabel>
 <br></br>
-<h:outputLabel value="Nome:"></h:outputLabel>
-<p:inputText id="nome" value="#{cpBean.cp.valor}" ></p:inputText>
+<h:outputLabel value="Descricao:"></h:outputLabel>
+<p:inputText id="descricao" value="#{cpBean.cp.descricao}" ></p:inputText>
 <br/>
-<h:outputLabel value="Telefone:"></h:outputLabel>
-<p:inputMask mask="+35199999-9999" id="telefone" value="#{forBean.vo.telefone}" ></p:inputMask>
+<h:outputLabel value="Data vencimento"></h:outputLabel>
+<p:calendar id="data" value="#{cpBean.cp.datavencimento}" ></p:calendar>
 <br/>
-<h:outputLabel value="Endereco:"></h:outputLabel>
-<p:inputText id="endereco" value="#{forBean.vo.endereco}" ></p:inputText>
+<h:outputLabel value="Valor"></h:outputLabel>
+<p:inputText id="valor" value="#{cpBean.cp.datavencimento}" locale="pt" converter="converteData" ></p:inputText>
 <br/>
-<h:outputLabel value="Obs:"></h:outputLabel>
-<p:editor id="Obs" value="#{forBean.vo.obs}" width="600"></p:editor>
+<h:outputLabel value="Fornecedor"></h:outputLabel>
+<p:selectOneMenu id="selecionaFornecedor" value="cpBean.fornecedor_id" >
+
+<f:selectItems value="#{cpBean.carregarFornecedores}"  ></f:selectItems>
+
+</p:selectOneMenu>
 <br/>
-<p:commandButton value="Cadastrar" actionListener="#{forBean.addFornecedor}" ajax="false" action="listar?faces-redirect" ></p:commandButton>
+<p:commandButton value="Cadastrar" actionListener="#{cpBean.addContas}" ajax="false" action="cp_listar?faces-redirect" ></p:commandButton>
 </h:form>
 </p:panel>
 </h:body>	

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+   <h:head></h:head>
+   <h:body>
+   <br/>   <h:form>
+	   <p:commandButton value="Nova contas" actionListener="#{cpBean.novaConta}" ajax="false" action="cp_novo?faces-redirect" ></p:commandButton>
+	
+	   <br/>
+		   <p:dataTable id="listagem_contas" value="#{cpBean.contas}" var="cp"
+		   
+		   				 rows="5"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+		   
+		   >
+		   		<p:column headerText="ID" >
+		   				<h:outputText value="#{cp.id}" ></h:outputText>
+		   		</p:column>
+		   		<br/>
+		   		<p:column headerText="Descricao" >
+		   				<h:outputText value="#{cp.descricao}" ></h:outputText>
+		   		</p:column>
+		   		<br/>
+		   		<p:column headerText="Valor" >
+		   				<h:outputText value="#{cp.valor}" ></h:outputText>
+		   		</p:column>
+		   		<br/>
+		   		<p:column headerText="Fornecedor" >
+		   				<h:outputText value="#{cp.fornecedor.nome}" ></h:outputText>
+		   		</p:column>
+		   		<br/>
+		   		
+		   </p:dataTable>
+		</h:form>
+   
+   </h:body>
+   
+   
+</html>

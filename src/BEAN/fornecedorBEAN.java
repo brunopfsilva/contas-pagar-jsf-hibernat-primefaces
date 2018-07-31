@@ -34,7 +34,7 @@ public class fornecedorBEAN {
 	}
 
 	public void selecionarFornecedor() {
-		this.vo = fornecedores.getRowData();
+		this.vo = fornecedores.getRowData(); //seleciona linha do data model
 	}
 	
 	public void setFornecedores(DataModel<Fornecedor>fornecedores) {
@@ -59,7 +59,7 @@ public class fornecedorBEAN {
 
 
 
-	public void novo() {
+	public void novo() { //cria novo fornecedor
 		vo = new Fornecedor();
 	}
 	

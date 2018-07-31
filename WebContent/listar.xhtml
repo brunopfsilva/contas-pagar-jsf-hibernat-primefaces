@@ -12,7 +12,14 @@
 	   <p:commandButton value="Novo fornecedor" actionListener="#{forBean.novo}" ajax="false" action="novo?faces-redirect" ></p:commandButton>
 	
 	   <br/>
-		   <p:dataTable id="listagem_fornecedor" value="#{forBean.fornecedores}" var="fornecedor">
+		   <p:dataTable id="listagem_fornecedor" value="#{forBean.fornecedores}" var="fornecedor"
+		   
+		   				 
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+		   
+		   >
 		   		<p:column headerText="ID" >
 		   				<h:outputText value="#{fornecedor.id}" ></h:outputText>
 		   		</p:column>
@@ -34,7 +41,7 @@
 		   				</p:commandButton>
 		   		</p:column>
 		   </p:dataTable>
-					   <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					   <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"><!-- apagar -->
 					   		<p:commandButton value="sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
         					<p:commandButton value="não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					   </p:confirmDialog>
