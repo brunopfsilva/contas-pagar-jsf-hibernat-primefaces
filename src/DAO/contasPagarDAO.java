@@ -13,13 +13,14 @@ public class contasPagarDAO extends DAO{
 	
 	public void salvarConta(ContasPagar contasPagar) {
 		
-		EntityManager em = getEntityManager();
+		EntityManager em = getEntityManager().createEntityManager();
 		
 						
 		try {
 			em.getTransaction().begin(); //inicia a transacao
 			em.persist(contasPagar); //salva
 			em.getTransaction().commit(); //comita
+			em.close();
 		} catch (Exception e) {
 			em.getTransaction().rollback(); //volta se der erro
 		}finally {
@@ -30,7 +31,7 @@ public class contasPagarDAO extends DAO{
 	
 	public List<ContasPagar>getAll(){
 		List <ContasPagar>lista = null;
-		EntityManager em = getEntityManager();
+		EntityManager em = getEntityManager().createEntityManager();
 
 		try {
 			

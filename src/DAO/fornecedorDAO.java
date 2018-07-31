@@ -10,7 +10,7 @@ import VO.Fornecedor;
 public class fornecedorDAO extends DAO{
 	
 	
-	EntityManager em = getEntityManager();
+	EntityManager em = getEntityManager().createEntityManager();
 	
 	public void save (Fornecedor fornecedor) {
 		
@@ -18,6 +18,7 @@ public class fornecedorDAO extends DAO{
 			em.getTransaction().begin();
 			em.persist(fornecedor);
 			em.getTransaction().commit();
+			em.close();
 		} catch (Exception e) {
 			em.getTransaction().rollback();
 		}finally {
@@ -43,6 +44,7 @@ public class fornecedorDAO extends DAO{
 			f.setObs(fornecedor.getObs());
 			//em.persist(f);
 			em.getTransaction().commit();
+			
 		} catch (Exception e) {
 			em.getTransaction().rollback();
 		}finally {
